@@ -1,0 +1,24 @@
+{
+  "subscription": {
+    "endpoint": "endpoint",
+    "keys": {
+      "auth": "authkey",
+      "p256dh": "p256dhkey"
+    }
+  },
+  "test_customer_id": "123456789",
+  "test_customer_email": "email",
+  "test_cc_emails": ["email"],
+  "test_bcc_emails": ["email"],
+  "test_notification_data": {
+    "name": "Your Name"
+  },
+  "test_file_paths": [
+    "file_path",
+    "file_path"
+  ],
+  "test_upload_files": [
+    "file_path",
+    "file_path"
+  ]
+}

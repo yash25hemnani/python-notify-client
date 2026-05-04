@@ -1,0 +1,1 @@
+pytest -s -v --log-cli-level=INFO -m integration
