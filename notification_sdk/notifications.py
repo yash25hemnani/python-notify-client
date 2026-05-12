@@ -37,7 +37,7 @@ class NotificationEngine:
         uploaded_paths = []
 
         if files:
-            # uploaded_paths = [{"path": "...", "originalname": "..."}, ...]
+            # uploaded_paths = [{"id": "...", "path": "...", "originalname": "..."}, ...]
             uploaded_paths = self.upload_email_attachments(files)
 
         payload = generate_payload(
