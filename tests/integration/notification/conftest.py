@@ -22,7 +22,7 @@ TEST_SUBSCRIPTION = _test_data["subscription"]
 TEST_NOTIFICATION_DATA = _test_data["test_notification_data"]
 TEST_FILE_PATHS = _test_data["test_file_paths"]
 TEST_UPLOAD_FILES = _test_data["test_upload_files"]
-TEST_TEMPLATE_SLUG = "welcome-new-user"
+TEST_TEMPLATE_SLUG = "hello-ops-walo"
 
 
 # ── Fixtures ──────────────────────────────────────────────────────────────────

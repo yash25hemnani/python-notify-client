@@ -90,3 +90,90 @@ class NotificationEngine:
         response = self.client.post("/notification/notify/push", payload)
         response.raise_for_status()
         return response.json()
+
+    def get_push_notifications(
+        self,
+        customer_email: str,
+        page: int = 1,
+        limit: int = 10,
+    ) -> dict:
+        """
+        Retrieve paginated push notifications for a customer.
+
+        Hits GET /api/notification/notify/push/all.
+
+        Args:
+            customer_email: Email address of the customer.
+            page: Page number for pagination (default: 1).
+            limit: Number of notifications per page (default: 10).
+
+        Returns:
+            Parsed JSON response from the API with paginated notifications.
+
+        Raises:
+            requests.HTTPError: If the API returns a non-2xx status code.
+        """
+        params = generate_params(
+            customerEmail=customer_email,
+            page=page,
+            limit=limit,
+        )
+
+        response = self.client.get("/notification/notify/push/all", params=params)
+        response.raise_for_status()
+        return response.json()
+
+    def mark_as_read(
+        self,
+        customer_email: str,
+        notification_id: str,
+    ) -> dict:
+        """
+        Mark a specific push notification as read.
+
+        Hits PATCH /api/notification/notify/push/mark-as-read.
+
+        Args:
+            customer_email: Email address of the customer.
+            notification_id: Unique identifier of the notification to mark as read.
+
+        Returns:
+            Parsed JSON response from the API.
+
+        Raises:
+            requests.HTTPError: If the API returns a non-2xx status code.
+        """
+        payload = generate_payload(
+            customerEmail=customer_email,
+            notificationId=notification_id,
+        )
+
+        response = self.client.patch("/notification/notify/push/mark-as-read", payload)
+        response.raise_for_status()
+        return response.json()
+
+    def mark_all_as_read(
+        self,
+        customer_email: str,
+    ) -> dict:
+        """
+        Mark all push notifications as read for a customer.
+
+        Hits PATCH /api/notification/notify/push/mark-all-as-read.
+
+        Args:
+            customer_email: Email address of the customer.
+
+        Returns:
+            Parsed JSON response from the API.
+
+        Raises:
+            requests.HTTPError: If the API returns a non-2xx status code.
+        """
+        payload = generate_payload(
+            customerEmail=customer_email,
+        )
+
+        response = self.client.patch("/notification/notify/push/mark-all-as-read", payload)
+        response.raise_for_status()
+        return response.json()
