@@ -100,7 +100,7 @@ class NotificationEngine:
         """
         Retrieve paginated push notifications for a customer.
 
-        Hits GET /api/notification/notify/push/all.
+        Hits GET /api/notification/all.
 
         Args:
             customer_email: Email address of the customer.
@@ -119,7 +119,7 @@ class NotificationEngine:
             limit=limit,
         )
 
-        response = self.client.get("/notification/notify/push/all", params=params)
+        response = self.client.get("/notification/all", params=params)
         response.raise_for_status()
         return response.json()
 
@@ -131,7 +131,7 @@ class NotificationEngine:
         """
         Mark a specific push notification as read.
 
-        Hits PATCH /api/notification/notify/push/mark-as-read.
+        Hits PATCH /api/notification/mark-as-read.
 
         Args:
             customer_email: Email address of the customer.
@@ -148,7 +148,7 @@ class NotificationEngine:
             notificationId=notification_id,
         )
 
-        response = self.client.patch("/notification/notify/push/mark-as-read", payload)
+        response = self.client.patch("/notification/mark-as-read", payload)
         response.raise_for_status()
         return response.json()
 
@@ -159,7 +159,7 @@ class NotificationEngine:
         """
         Mark all push notifications as read for a customer.
 
-        Hits PATCH /api/notification/notify/push/mark-all-as-read.
+        Hits PATCH /api/notification/mark-all-as-read.
 
         Args:
             customer_email: Email address of the customer.
@@ -174,6 +174,6 @@ class NotificationEngine:
             customerEmail=customer_email,
         )
 
-        response = self.client.patch("/notification/notify/push/mark-all-as-read", payload)
+        response = self.client.patch("/notification/mark-all-as-read", payload)
         response.raise_for_status()
         return response.json()
